@@ -39,6 +39,17 @@ const customStyles = {
   }),
 };
 
+const CustomInput = (props) => {
+  return (
+    <components.Input
+      {...props}
+      innerRef={(el) => {
+        if (el) el.readOnly = true;
+      }}
+    />
+  );
+};
+
 function App() {
   const [selectedOption1, setSelectedOption1] = useState(null);
   const [selectedOption2, setSelectedOption2] = useState(null);
@@ -57,6 +68,7 @@ function App() {
           placeholder="Select Space"
           isSearchable={false}
           styles={customStyles}
+          components={{ Input: CustomInput }}
         />
 
         <h2>Input 2</h2>
@@ -67,6 +79,7 @@ function App() {
           placeholder="Select Space"
           isSearchable={false}
           styles={customStyles}
+          components={{ Input: CustomInput }}
         />
 
         <h2>Input 3</h2>
